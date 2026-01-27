@@ -87,6 +87,31 @@ body {
     background: var(--bg-primary);
 }
 
+/* Fondo graffiti KHATTD */
+.bg-graffiti {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    opacity: 0.25;
+}
+
+.bg-graffiti::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 620 420' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='620' height='420' fill='transparent'/%3E%3Ctext x='-10' y='130' fill='rgba(255,255,255,0.10)' font-family='Arial' font-size='96' font-weight='700' transform='rotate(-12 0 130)'%3EKHATTD%3C/text%3E%3Ctext x='240' y='320' fill='rgba(255,255,255,0.08)' font-family='Arial' font-size='88' font-weight='700' transform='rotate(-12 240 320)'%3EKHATTD%3C/text%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 620px 420px;
+    opacity: 0.5;
+    filter: blur(0.2px);
+    animation: graffitiDrift 40s linear infinite;
+}
+
 /* Efecto tornasol animado */
 .bg-animated::before {
     content: '';
@@ -128,6 +153,15 @@ body {
     66% {
         filter: hue-rotate(-20deg);
         opacity: 0.9;
+    }
+}
+
+@keyframes graffitiDrift {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: -620px 420px;
     }
 }
 
@@ -279,7 +313,9 @@ body {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    padding: 8rem 2rem 4rem;
+    justify-content: space-between;
+    gap: 4rem;
+    padding: 8rem 6vw 5rem;
     position: relative;
 }
 
@@ -297,7 +333,7 @@ body {
 .hero-content {
     flex: 1;
     z-index: 1;
-    max-width: 600px;
+    max-width: 820px;
 }
 
 .hero-badge {
@@ -334,7 +370,7 @@ body {
 
 .hero-title {
     font-family: var(--font-heading);
-    font-size: clamp(4rem, 10vw, 8rem);
+    font-size: clamp(4.5rem, 12vw, 9.5rem);
     line-height: 0.9;
     margin-bottom: 1rem;
     letter-spacing: 5px;
@@ -379,7 +415,7 @@ body {
 }
 
 .hero-subtitle {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: 600;
     letter-spacing: 3px;
     color: var(--text-secondary);
@@ -387,14 +423,14 @@ body {
 }
 
 .hero-location {
-    font-size: 1rem;
+    font-size: 1.15rem;
     color: var(--text-secondary);
     margin-bottom: 2rem;
 }
 
 .hero-stats {
     display: flex;
-    gap: 3rem;
+    gap: 3.5rem;
     margin-bottom: 3rem;
     flex-wrap: wrap;
 }
@@ -405,7 +441,7 @@ body {
 
 .stat-number {
     font-family: var(--font-heading);
-    font-size: 2.5rem;
+    font-size: 3rem;
     background: linear-gradient(135deg, var(--iridescent-2), var(--iridescent-1), var(--iridescent-4));
     background-size: 200% 200%;
     -webkit-background-clip: text;
@@ -417,7 +453,7 @@ body {
 }
 
 .stat-label {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--text-secondary);
 }
 
@@ -425,6 +461,11 @@ body {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
+}
+
+.hero-cta .btn {
+    padding: 1.15rem 2.4rem;
+    font-size: 1rem;
 }
 
 .hero-image {
@@ -437,8 +478,8 @@ body {
 
 .image-container {
     position: relative;
-    width: 400px;
-    height: 400px;
+    width: 600px;
+    height: 600px;
 }
 
 .image-container img {
@@ -468,8 +509,8 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 450px;
-    height: 450px;
+    width: 680px;
+    height: 680px;
     background:
         radial-gradient(circle at 30% 30%, rgba(255, 107, 107, 0.2) 0%, transparent 50%),
         radial-gradient(circle at 70% 70%, rgba(72, 219, 251, 0.2) 0%, transparent 50%),
@@ -569,22 +610,22 @@ section {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1320px;
     margin: 0 auto;
 }
 
 .section-title {
     font-family: var(--font-heading);
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-size: clamp(3rem, 6vw, 4.5rem);
     letter-spacing: 3px;
     margin-bottom: var(--spacing-lg);
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.25rem;
 }
 
 .title-icon {
-    font-size: 2.5rem;
+    font-size: 3rem;
 }
 
 /* ==========================================
@@ -608,7 +649,7 @@ section {
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-left: 3px solid var(--iridescent-1);
     border-radius: 4px;
-    padding: 1.5rem;
+    padding: 2rem;
     display: flex;
     align-items: center;
     gap: 1.5rem;
@@ -648,7 +689,7 @@ section {
 
 .track-number {
     font-family: var(--font-heading);
-    font-size: 2rem;
+    font-size: 2.4rem;
     color: var(--iridescent-2);
     min-width: 50px;
     opacity: 0.7;
@@ -659,25 +700,25 @@ section {
 }
 
 .track-info h3 {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     margin-bottom: 0.3rem;
     font-weight: 700;
 }
 
 .track-info p {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--text-secondary);
 }
 
 .track-duration {
     font-family: var(--font-heading);
-    font-size: 1.2rem;
+    font-size: 1.35rem;
     color: var(--text-secondary);
 }
 
 .track-play {
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -795,7 +836,7 @@ section {
 
 .platforms h3 {
     font-family: var(--font-heading);
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     letter-spacing: 2px;
     margin-bottom: 2rem;
     color: var(--text-secondary);
@@ -812,13 +853,14 @@ section {
     display: flex;
     align-items: center;
     gap: 0.8rem;
-    padding: 1rem 2rem;
+    padding: 1.15rem 2.4rem;
     background: var(--bg-card);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 50px;
     color: var(--text-primary);
     text-decoration: none;
     font-weight: 600;
+    font-size: 1rem;
     transition: all 0.3s ease;
 }
 
@@ -842,7 +884,7 @@ section {
 
 .bio-main h3 {
     font-family: var(--font-heading);
-    font-size: 2rem;
+    font-size: 2.4rem;
     letter-spacing: 2px;
     margin-bottom: 1.5rem;
     background: linear-gradient(135deg, var(--iridescent-1), var(--iridescent-2), var(--iridescent-3));
@@ -854,7 +896,7 @@ section {
 }
 
 .bio-main p {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     line-height: 1.8;
     margin-bottom: 1.5rem;
     color: var(--text-secondary);
@@ -874,7 +916,7 @@ section {
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 4px;
-    padding: 1.5rem;
+    padding: 1.8rem;
     text-align: center;
     transition: all 0.3s ease;
     position: relative;
@@ -898,19 +940,19 @@ section {
 }
 
 .stat-icon {
-    font-size: 2rem;
+    font-size: 2.3rem;
     margin-bottom: 0.5rem;
 }
 
 .stat-value {
     font-family: var(--font-heading);
-    font-size: 1.8rem;
+    font-size: 2.1rem;
     letter-spacing: 1px;
     margin-bottom: 0.3rem;
 }
 
 .stat-desc {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--text-secondary);
 }
 
@@ -930,7 +972,7 @@ section {
 
 .contact-info h3 {
     font-family: var(--font-heading);
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     letter-spacing: 2px;
     margin-bottom: 2rem;
 }
@@ -939,7 +981,7 @@ section {
     display: flex;
     gap: 1.5rem;
     margin-bottom: 2rem;
-    padding: 1.5rem;
+    padding: 1.8rem;
     background: var(--bg-card);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.05);
@@ -953,8 +995,8 @@ section {
 }
 
 .contact-icon {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -968,7 +1010,7 @@ section {
 }
 
 .contact-label {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     color: var(--text-secondary);
     margin-bottom: 0.3rem;
     text-transform: uppercase;
@@ -979,6 +1021,7 @@ section {
     color: var(--text-primary);
     text-decoration: none;
     font-weight: 600;
+    font-size: 1.05rem;
     transition: color 0.3s ease;
 }
 
@@ -996,7 +1039,7 @@ section {
 }
 
 .contact-cta p {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     line-height: 1.8;
     color: var(--text-secondary);
 }
@@ -1140,10 +1183,48 @@ section {
     .hero-cta {
         justify-content: center;
     }
+
+    .section-title {
+        font-size: clamp(2.6rem, 6vw, 3.6rem);
+    }
+
+    .track-card {
+        padding: 1.6rem;
+    }
+
+    .track-number {
+        font-size: 2rem;
+    }
+
+    .track-play {
+        width: 44px;
+        height: 44px;
+    }
+
+    .platform-btn {
+        padding: 1rem 2rem;
+    }
+
+    .bio-main p {
+        font-size: 1.1rem;
+    }
+
+    .stat-value {
+        font-size: 1.9rem;
+    }
+
+    .contact-item {
+        padding: 1.5rem;
+    }
+
+    .contact-icon {
+        width: 54px;
+        height: 54px;
+    }
     
     .image-container {
-        width: 300px;
-        height: 300px;
+        width: 460px;
+        height: 460px;
         margin-top: 3rem;
     }
     
@@ -1172,7 +1253,15 @@ section {
     }
     
     .hero-title {
-        font-size: 3rem;
+        font-size: 4rem;
+    }
+
+    .section-title {
+        font-size: 2.4rem;
+    }
+
+    .title-icon {
+        font-size: 2.4rem;
     }
     
     .hero-stats {
@@ -1180,10 +1269,60 @@ section {
         gap: 1.5rem;
         text-align: center;
     }
+
+    .hero-cta .btn {
+        font-size: 1.05rem;
+        padding: 1.1rem 2.2rem;
+    }
     
     .btn {
         width: 100%;
         justify-content: center;
+    }
+
+    .track-card {
+        padding: 1.4rem;
+    }
+
+    .track-info h3 {
+        font-size: 1.2rem;
+    }
+
+    .track-info p {
+        font-size: 0.95rem;
+    }
+
+    .platform-btn {
+        font-size: 0.95rem;
+    }
+
+    .bio-main h3 {
+        font-size: 2rem;
+    }
+
+    .bio-main p {
+        font-size: 1.05rem;
+    }
+
+    .stat-box {
+        padding: 1.4rem;
+    }
+
+    .contact-label {
+        font-size: 0.8rem;
+    }
+
+    .contact-details a {
+        font-size: 1rem;
+    }
+
+    .contact-cta p {
+        font-size: 1.05rem;
+    }
+
+    .image-container {
+        width: 360px;
+        height: 360px;
     }
     
     .track-card {
